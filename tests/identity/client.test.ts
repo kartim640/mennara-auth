@@ -179,4 +179,10 @@ describe("isStepUpRequiredError", () => {
     expect(isStepUpRequiredError(new IdentityRequestError("Unauthorized", 401))).toBe(false)
     expect(isStepUpRequiredError(new Error("Step-up verification required"))).toBe(false)
   })
+
+  it("uses the step_up_required code when Identity sends one", () => {
+    expect(isStepUpRequiredError(new IdentityRequestError("Confirm it is you", 401, "step_up_required"))).toBe(true)
+    expect(isStepUpRequiredError(new IdentityRequestError("Step-up verification required", 401, "session_revoked"))).toBe(false)
+    expect(isStepUpRequiredError(new IdentityRequestError("x", 403, "step_up_required"))).toBe(false)
+  })
 })
