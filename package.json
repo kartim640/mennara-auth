@@ -1,0 +1,61 @@
+{
+  "name": "@mennara/auth",
+  "version": "0.0.0",
+  "description": "Sign-in plumbing for Mennara browser apps: session-bound CSRF, cross-tab session changes, login redirects, and (Identity portals only) the Identity browser API client.",
+  "type": "module",
+  "license": "UNLICENSED",
+  "sideEffects": false,
+  "files": [
+    "dist",
+    "README.md",
+    "CHANGELOG.md"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./identity": {
+      "types": "./dist/identity/index.d.ts",
+      "import": "./dist/identity/index.js"
+    }
+  },
+  "scripts": {
+    "build": "vite build",
+    "clean": "rm -rf dist coverage",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "verify": "pnpm lint && pnpm typecheck && pnpm test && pnpm build && pnpm verify:dist",
+    "verify:dist": "node scripts/verify-distribution.mjs",
+    "prepack": "pnpm build",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release": "pnpm build && changeset publish"
+  },
+  "dependencies": {
+    "@mennara/http": "file:../mennara-http"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^3.0.3",
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^22.0.0",
+    "eslint": "^10.11.0",
+    "globals": "^17.12.0",
+    "jsdom": "^30.1.2",
+    "typescript": "~6.0.3",
+    "typescript-eslint": "^8.70.1",
+    "vite": "^8.3.1",
+    "vite-plugin-dts": "^5.1.1",
+    "vitest": "^5.0.1"
+  },
+  "engines": {
+    "node": ">=22.12.0",
+    "pnpm": ">=8.15.0"
+  },
+  "packageManager": "pnpm@10.29.2",
+  "publishConfig": {
+    "access": "restricted"
+  }
+}
