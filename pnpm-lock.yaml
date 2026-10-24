@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@mennara/http':
-        specifier: file:../mennara-http
-        version: file:../mennara-http
+        specifier: file:../mennara-lib-http
+        version: file:../mennara-lib-http
     devDependencies:
       '@changesets/cli':
         specifier: ^3.0.3
@@ -276,8 +276,8 @@ packages:
     resolution: {integrity: sha512-6QEf6yqFbETdwGITKq57aYoPfX/3K8XFNwsAlx0C1M7o8cb79sv1M3w+tWuWvIcSbNqrLF7OD7YpZMVVz335hQ==}
     engines: {node: '>=20.0.0'}
 
-  '@mennara/http@file:../mennara-http':
-    resolution: {directory: ../mennara-http, type: directory}
+  '@mennara/http@file:../mennara-lib-http':
+    resolution: {directory: ../mennara-lib-http, type: directory}
     engines: {node: '>=22.12.0', pnpm: '>=8.15.0'}
 
   '@oxc-project/types@0.155.0':
@@ -1537,7 +1537,7 @@ snapshots:
       tinyglobby: 0.2.17
       yaml: 2.9.1
 
-  '@mennara/http@file:../mennara-http': {}
+  '@mennara/http@file:../mennara-lib-http': {}
 
   '@oxc-project/types@0.155.0': {}
 

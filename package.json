@@ -35,7 +35,7 @@
     "release": "pnpm build && changeset publish"
   },
   "dependencies": {
-    "@mennara/http": "file:../mennara-http"
+    "@mennara/http": "file:../mennara-lib-http"
   },
   "devDependencies": {
     "@changesets/cli": "^3.0.3",
