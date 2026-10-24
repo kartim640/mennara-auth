@@ -19,9 +19,8 @@ export class IdentityRequestError extends HttpError {
 }
 
 export function isStepUpRequiredError(error: unknown): error is IdentityRequestError {
-  return (
-    error instanceof IdentityRequestError &&
-    error.status === 401 &&
-    error.message.toLowerCase().includes("step-up verification required")
-  )
+  if (!(error instanceof IdentityRequestError) || error.status !== 401) return false
+  if (error.code) return error.code === "step_up_required"
+  // Identity versions without error codes only send the text.
+  return error.message.toLowerCase().includes("step-up verification required")
 }
